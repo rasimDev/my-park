@@ -1,32 +1,67 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app color="primary" dark @click="drawer = !drawer">
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-title> MyPark </v-app-bar-title>
+      <v-spacer></v-spacer>
+
+      <AppBarSession v-if="activeLogin" />
+      <SignInBtn 
+        v-if="!activeLogin"
+        link to="/signin"/>
+    </v-app-bar>
+
+    <v-navigation-drawer
+      app
+      clipped
+      v-model="drawer"
+    >
+      <v-list nav>
+        <v-list-item link to="/">
+          <v-list-item-icon>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Principal</v-list-item-title>
+        </v-list-item>
+        <!-- <v-list-item link to="/parkings">
+          <v-list-item-icon>
+            <v-icon>mdi-book-account</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Administrar Estacionamientos</v-list-item-title>
+        </v-list-item> -->
+      </v-list>
+      <SignOutBtn v-if="activeLogin"/>
+    </v-navigation-drawer>
+
+    <v-main>
+      <v-container style="height: 100%">
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { mapGetters } from 'vuex';
+import AppBarSession from '@/components/AppBarSession'
+import SignInBtn from './components/SignInBtn.vue';
+import SignOutBtn from './components/SignOutBtn.vue';
+export default {
+  components: {
+    AppBarSession,
+    SignInBtn,
+    SignOutBtn
+},
+  data: () => ({
+    drawer: false
+  }),
+  computed: {
+    ...mapGetters('session', ['activeLogin']),
+  },
+  mounted() {
+    this.$store.dispatch('session/subscribeToAuthStateChange');
+  },
+};
+</script>
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style></style>

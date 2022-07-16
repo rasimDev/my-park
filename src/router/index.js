@@ -1,29 +1,57 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Store from '@/store/';
 
-Vue.use(VueRouter)
+import SignIn from '@/views/SignInView.vue';
+import SignUp from '@/views/SignUpView.vue';
+import Home from '@/views/HomeView.vue'
+
+
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '*',
+    redirect: '/home',
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn,
+    meta: { requireLogin: false },
+  },
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp,
+    meta: { requireLogin: false },
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+    meta: { requireLogin: false },
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  const requireLogin = to.meta.requireLogin;
+  const activeLogin = Store.getters['session/activeLogin'];
+  if (requireLogin) {
+    if (activeLogin) {
+      next();
+    } else {
+      next('/signin');
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;
