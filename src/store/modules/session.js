@@ -33,15 +33,15 @@ export const sessionModule = {
         await Firebase.auth().signInWithEmailAndPassword(
           credentials.email,
           credentials.password
-        );
-      } catch (e) {
-        console.error('La mansa embarraita', e);
-      } finally {
-        commit('SET_LOADING', false);
-      }
-    },
-    async createUserWithEmailAndPassword({ commit }, newUser) {
-      commit('SET_LOADING', true);
+          );
+        } catch (e) {
+          console.error('Error al iniciar sesión', e);
+        } finally {
+          commit('SET_LOADING', false);
+        }
+      },
+      async createUserWithEmailAndPassword({ commit }, newUser) {
+        commit('SET_LOADING', true);
 
       try {
         await Firebase.auth().createUserWithEmailAndPassword(
