@@ -44,13 +44,16 @@
 <script>
 import { mapGetters } from 'vuex';
 import AppBarSession from '@/components/AppBarSession'
-import SignInBtn from './components/SignInBtn.vue';
-import SignOutBtn from './components/SignOutBtn.vue';
+import SignInBtn from './components/SignInBtn.vue'
+import SignOutBtn from './components/SignOutBtn.vue'
+import Footer from './components/Footer.vue'
+
 export default {
   components: {
     AppBarSession,
     SignInBtn,
-    SignOutBtn
+    SignOutBtn,
+    Footer
 },
   data: () => ({
     drawer: false
