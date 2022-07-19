@@ -1,10 +1,11 @@
+import Store from '@/store/';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Store from '@/store/';
 
+import DetailsPark from '@/views/DetailsParkView.vue';
+import Home from '@/views/HomeView.vue';
 import SignIn from '@/views/SignInView.vue';
 import SignUp from '@/views/SignUpView.vue';
-import Home from '@/views/HomeView.vue'
 
 
 Vue.use(VueRouter);
@@ -30,6 +31,12 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home,
+    meta: { requireLogin: false },
+  },
+  {
+    path: '/details',
+    name: 'DetailsPark',
+    component: DetailsPark,
     meta: { requireLogin: false },
   },
 ];
