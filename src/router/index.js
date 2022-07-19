@@ -1,6 +1,8 @@
+
 import Store from '@/store/';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
 
 import DetailsPark from '@/views/DetailsParkView.vue';
 import Home from '@/views/HomeView.vue';
@@ -12,6 +14,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+
     path: '*',
     redirect: '/home',
   },
