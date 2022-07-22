@@ -17,7 +17,7 @@
           <v-card-actions>
             <v-btn color="primary" block large type="submit">
               Iniciar sesión
-              <v-icon class="ml-4">mdi-arrow-right-thin-circle-outline</v-icon>
+              <v-icon class="ml-4">mdi-login</v-icon>
             </v-btn>
           </v-card-actions>
         </v-form>
