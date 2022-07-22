@@ -4,7 +4,7 @@
       <v-card>
       <img class="img-register" src="../assets/car-register.svg" alt="" srcset="">
         <v-form @submit.prevent="handleSignUpFormSubmit" ref="signUpFormRef">
-        <v-card-title class="justify-center"> Regístrate con tu usuario y contraseña </v-card-title>
+        <v-card-title class="justify-center">Registrate</v-card-title>
         <v-card-text>
           <v-text-field
             type="email"
@@ -24,12 +24,6 @@
         <v-card-actions>
           <v-btn color="primary" block type="submit">
             Registrar
-            <!-- <v-icon>mdi-send</v-icon> -->
-          </v-btn>
-        </v-card-actions>
-        <v-card-actions>
-          <v-btn block type="submit">
-            Acceder con Google
             <!-- <v-icon>mdi-send</v-icon> -->
           </v-btn>
         </v-card-actions>

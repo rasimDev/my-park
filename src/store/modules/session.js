@@ -36,6 +36,7 @@ export const sessionModule = {
           );
         } catch (e) {
           console.error('Error al iniciar sesión', e);
+          alert('Email o contraseña incorrectos')
         } finally {
           commit('SET_LOADING', false);
         }
