@@ -3,8 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
-
 import "./plugins/firebase";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 Vue.config.productionTip = false
 
