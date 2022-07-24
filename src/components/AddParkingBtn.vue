@@ -1,11 +1,11 @@
 <template>
   <v-dialog v-model="dialog" width="500px">
     <template #activator="{ on }">
-      <v-btn color="info" v-on="on">Agregar estacionamiento</v-btn>
+      <v-btn color="info" v-on="on">Publicar estacionamiento</v-btn>
     </template>
     <v-card>
       <v-form @submit.prevent="handleFormSubmit" ref="form">
-        <v-card-title>Agregando estacionamiento</v-card-title>
+        <v-card-title>Publicando estacionamiento</v-card-title>
         <v-card-text>
           <v-text-field
             label="Nombre"
@@ -14,42 +14,27 @@
           ></v-text-field>
           <v-text-field
             label="URL de la Imagen del estacionamiento"
-            v-model="parking.img"
+            v-model="parking.image"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
-            label="Cupos del curso"
-            v-model.number="course.quota"
+            label="Dirección"
+            v-model.number="parking.adress"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
-            label="Inscritos en el curso"
-            v-model.number="course.inscribed"
+            label="Comuna"
+            v-model.number="parking.commune"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
-            label="Duración del curso"
-            v-model="course.duration"
+            label="Tarifa diaria"
+            v-model.number="parking.rate"
             :rules="[required]"
           ></v-text-field>
-          <v-text-field
-            label="Costo del curso"
-            v-model.number="course.price"
-            :rules="[required]"
-          ></v-text-field>
-          <v-text-field
-            label="Fecha de registro"
-            v-model="course.date"
-            :rules="[required]"
-          ></v-text-field>
-          <v-textarea
-            label="Descrición del curso"
-            v-model="course.description"
-            :rules="[required]"
-          ></v-textarea>
         </v-card-text>
         <v-card-actions>
-          <v-btn type="submit" color="green">Agregar</v-btn>
+          <v-btn type="submit" color="green">Publicar</v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -61,31 +46,29 @@ import { mapActions } from 'vuex';
 export default {
   data: () => ({
     dialog: false,
-    course: {
+    parking: {
       name: '',
-      description: '',
-      img: '',
-      quota: null,
-      inscribed: null,
-      duration: '',
-      price: null,
-      date: '',
-      finished: false
+      image: '',
+      adress: null,
+      commune: null,
+      rate: null,
+      status: 'available',
+      owner: 'maildelusuario@mail.com'
     },
   }),
   methods: {
-    ...mapActions('courses', {
-      createCourse: 'createOne',
-      getAllCourses: 'getAll',
+    ...mapActions('parkings', {
+      createParking: 'createOne',
+      getAllParkings: 'getAll',
     }),
     required(value) {
       return !!value || 'Este campo es obligatorio';
     },
     async handleFormSubmit() {
       if (this.$refs.form.validate()) {
-        await this.createCourse({ ...this.course });
+        await this.createParking({ ...this.parking });
         this.dialog = false;
-        await this.getAllCourses();
+        await this.getAllParkings();
       }
     },
   },
