@@ -9,6 +9,7 @@
       </v-col>
       <v-col>
         <v-layout style="gap: 10px" wrap>
+        <AddParkingBtn/>
           <v-flex v-for="parking in parkings" :key="parking.id">
             <CardParking :value="parking"/>
           </v-flex>
@@ -21,12 +22,14 @@
 
 import CardParking from "@/components/CardParking.vue"
 import MapComponent from "@/components/MapComponent.vue"
+import AddParkingBtn from "@/components/AddParkingBtn.vue"
 
 import { mapState, mapActions } from 'vuex'
 export default {
     components: {
     CardParking,
-    MapComponent
+    MapComponent,
+    AddParkingBtn
 },
     computed: {
       ...mapState('parkings', {
