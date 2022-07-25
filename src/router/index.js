@@ -4,6 +4,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 
+import AboutView from '@/views/AboutView.vue';
 import DetailsPark from '@/views/DetailsParkView.vue';
 import Home from '@/views/HomeView.vue';
 import SignIn from '@/views/SignInView.vue';
@@ -40,6 +41,12 @@ const routes = [
     path: '/details',
     name: 'DetailsPark',
     component: DetailsPark,
+    meta: { requireLogin: false },
+  },
+  {
+    path: '/about',
+    name: 'AboutView',
+    component: AboutView,
     meta: { requireLogin: false },
   },
 ];

@@ -23,6 +23,20 @@
           </v-list-item-icon>
           <v-list-item-title>Principal</v-list-item-title>
         </v-list-item>
+
+        <v-list-item link to="">
+          <v-list-item-icon>
+            <v-icon>mdi-car-clock</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Publicar</v-list-item-title>
+        </v-list-item>
+      </v-list>
+        <v-list-item link to="/about">
+          <v-list-item-icon>
+            <v-icon>mdi-account-group</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Acerca de</v-list-item-title>
+        </v-list-item>
       </v-list>
       <SignOutBtn v-if="activeLogin"/>
     </v-navigation-drawer>

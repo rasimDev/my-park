@@ -14,27 +14,42 @@
           ></v-text-field>
           <v-text-field
             label="URL de la Imagen del estacionamiento"
-            v-model="parking.image"
+            v-model="parking.img"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
-            label="Dirección"
-            v-model.number="parking.adress"
+            label="Cupos del curso"
+            v-model.number="course.quota"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
-            label="Comuna"
-            v-model.number="parking.commune"
+            label="Inscritos en el curso"
+            v-model.number="course.inscribed"
             :rules="[required]"
           ></v-text-field>
           <v-text-field
-            label="Tarifa diaria"
-            v-model.number="parking.rate"
+            label="Duración del curso"
+            v-model="course.duration"
             :rules="[required]"
           ></v-text-field>
+          <v-text-field
+            label="Costo del curso"
+            v-model.number="course.price"
+            :rules="[required]"
+          ></v-text-field>
+          <v-text-field
+            label="Fecha de registro"
+            v-model="course.date"
+            :rules="[required]"
+          ></v-text-field>
+          <v-textarea
+            label="Descrición del curso"
+            v-model="course.description"
+            :rules="[required]"
+          ></v-textarea>
         </v-card-text>
         <v-card-actions>
-          <v-btn type="submit" color="green">Publicar</v-btn>
+          <v-btn type="submit" color="green">Agregar</v-btn>
         </v-card-actions>
       </v-form>
     </v-card>
@@ -46,20 +61,22 @@ import { mapActions } from 'vuex';
 export default {
   data: () => ({
     dialog: false,
-    parking: {
+    course: {
       name: '',
-      image: '',
-      adress: null,
-      commune: null,
-      rate: null,
-      status: 'available',
-      owner: 'maildelusuario@mail.com'
+      description: '',
+      img: '',
+      quota: null,
+      inscribed: null,
+      duration: '',
+      price: null,
+      date: '',
+      finished: false
     },
   }),
   methods: {
-    ...mapActions('parkings', {
-      createParking: 'createOne',
-      getAllParkings: 'getAll',
+    ...mapActions('courses', {
+      createCourse: 'createOne',
+      getAllCourses: 'getAll',
     }),
     required(value) {
       return !!value || 'Este campo es obligatorio';
