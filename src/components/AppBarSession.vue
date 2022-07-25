@@ -1,10 +1,13 @@
 <template>
-  <div>
-    <v-btn text small>
-      {{ userEmail }}
-      <v-icon class="ml-2">mdi-logout</v-icon>
-    </v-btn>
-  </div>
+    <v-list-item>
+        <v-list-item-icon>
+            <v-icon>mdi-account-circle</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title>
+            <!-- Mostrar nombre de usuario -->
+            {{ user.email }}
+        </v-list-item-title>
+    </v-list-item>
 
 </template>
 
