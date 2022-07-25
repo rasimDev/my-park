@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <v-footer class="p-0" v-bind="localAttrs" :padless="padless">
+  <div class="container">
+    <v-footer v-bind="localAttrs" :padless="padless">
       <v-card flat tile width="100%" class="primary dark text-center">
         <v-card-text class="border">
           <v-btn
@@ -48,5 +48,8 @@ export default {
 </script>
 
 <style>
-
+.v-footer {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
 </style>

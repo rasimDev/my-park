@@ -1,11 +1,11 @@
 <template>
   <v-dialog v-model="dialog" width="500px">
     <template #activator="{ on }">
-      <v-btn color="info" v-on="on">Agregar estacionamiento</v-btn>
+      <v-btn color="info" v-on="on">Publicar estacionamiento</v-btn>
     </template>
     <v-card>
       <v-form @submit.prevent="handleFormSubmit" ref="form">
-        <v-card-title>Agregando estacionamiento</v-card-title>
+        <v-card-title>Publicando estacionamiento</v-card-title>
         <v-card-text>
           <v-text-field
             label="Nombre"
@@ -83,9 +83,9 @@ export default {
     },
     async handleFormSubmit() {
       if (this.$refs.form.validate()) {
-        await this.createCourse({ ...this.course });
+        await this.createParking({ ...this.parking });
         this.dialog = false;
-        await this.getAllCourses();
+        await this.getAllParkings();
       }
     },
   },

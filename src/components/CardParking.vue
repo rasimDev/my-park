@@ -5,7 +5,7 @@
             class="white--text align-end" 
             height="200px" 
             :src="value.image">
-            <v-card-title>{{ value.name }}</v-card-title>
+            <v-card-title class="title-text">{{ value.name }}</v-card-title>
         </v-img>
         <v-card-subtitle class="pb-0">{{ value.adress }}
         </v-card-subtitle>
@@ -16,17 +16,18 @@
         </v-card-text>
 
     <v-card-actions>
-      <v-btn
+      <!-- <v-btn
         color="orange"
         text
       >
         Compartir
-      </v-btn>
+      </v-btn> -->
 
        <v-btn
               small
               color="primary"
               dark
+              link to="/details"
             >
               Reservar
             </v-btn>
@@ -42,5 +43,7 @@ export default {
 </script>
 
 <style>
-
+.title-text{
+      background-color: #00000061;
+}
 </style>
