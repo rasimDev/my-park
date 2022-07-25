@@ -3,7 +3,6 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store'
-
 import 'mapbox-gl/dist/mapbox-gl.css'
 import "./plugins/firebase"
 

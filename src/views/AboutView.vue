@@ -24,7 +24,7 @@
         Como <strong>*usuario*</strong> puedo encontrar diversos
         estacionamientos en la aplicación y elegir uno para poder reservar en un
         horario definido, con esto me aseguro que al salir de mi casa ya tendré
-        un estacionamiento asegurado.<>
+        un estacionamiento asegurado
       </p>
 
       <p>
