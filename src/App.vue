@@ -1,14 +1,18 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark @click="drawer = !drawer">
+    <v-app-bar app color="blue-grey lighten-1" dark @click="drawer = !drawer">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-app-bar-title> MyPark </v-app-bar-title>
+      <img src="./assets/logo2.png" alt="MyPark">
+      <!-- <v-app-bar-title> MyPark</v-app-bar-title> -->
       <v-spacer></v-spacer>
 
       <AppBarSession v-if="activeLogin" />
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn >
       <SignInBtn 
-        v-if="!activeLogin"
-        link to="/signin"/>
+        v-if="!activeLogin" 
+        link to="/signin" />
     </v-app-bar>
 
     <v-navigation-drawer
@@ -18,7 +22,7 @@
     >
       <v-list nav>
         <v-list-item link to="/">
-          <v-list-item-icon>
+          <v-list-item-icon >
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Principal</v-list-item-title>
