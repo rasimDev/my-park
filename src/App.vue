@@ -24,10 +24,10 @@
           <v-list-item-title>Acerca de</v-list-item-title>
         </v-list-item>
         <AppBarSession v-if="activeLogin"/>
-      </v-list>
-
       <SignOutBtn v-if="activeLogin" />
       <SignInBtn v-if="!activeLogin" link to="/signin" />
+      </v-list>
+
     </v-navigation-drawer>
 
     <v-main>
