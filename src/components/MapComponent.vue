@@ -3,7 +3,6 @@
 </template>
 
 <script>
-
 import mapboxgl, { FullscreenControl } from 'mapbox-gl'
 mapboxgl.accessToken = 'pk.eyJ1IjoiY3Jpc3NsaWxpdGgiLCJhIjoiY2w1azF6cG0wMDV3bjNpcG5tdmZvc2p5NCJ9.0VZ-K72UuccwwmzRI7I1UA'
 export default {
@@ -18,31 +17,25 @@ export default {
       zoom: 9, // starting zoom
       projection: 'globe' // display the map as a 3D globe
     })
-
     this.map.on('style.load', () => {
       this.map.setFog({})
     })
-
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl
     })
     
     this.map.addControl(geocoder)
-
     // geocoder.on('result', (e) => {
     //   // this.geocoderLastResult = e.result
     //   e.result.center
     // })
-
     this.map.addControl(
       new mapboxgl.FullscreenControl()
     )
-
     this.map.addControl(
       new mapboxgl.NavigationControl()
     )
-
     this.map.addControl(
       new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -55,7 +48,6 @@ export default {
     // setTimeout(() => {
     //   this.$store.commit('events/ADD_TO_LIST', [12.66148, 55.708167])
     // }, 10000)
-
     // mapboxClient.geocoding
     //   .forwardGeocode({
     //     query: 'Wellington, New Zealand',
@@ -75,7 +67,6 @@ export default {
     //       return;
     //     }
     //     const feature = response.body.features[0];
-
     //     // Create a marker and add it to the map.
     //     new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
     //   });
