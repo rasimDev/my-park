@@ -23,11 +23,21 @@
           </v-list-item-icon>
           <v-list-item-title>Acerca de</v-list-item-title>
         </v-list-item>
-        <AppBarSession v-if="activeLogin"/>
-      </v-list>
 
-      <SignOutBtn v-if="activeLogin" />
-      <SignInBtn v-if="!activeLogin" link to="/signin" />
+        <v-list-item>
+          <!-- <v-list-item-icon>
+            <v-icon>mdi-account-group</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Acerca de</v-list-item-title> -->
+          <AddParkingBtn/>
+        </v-list-item>
+
+        <v-divider></v-divider>
+
+        <AppBarSession v-if="activeLogin" />
+        <SignOutBtn v-if="activeLogin" />
+        <SignInBtn v-if="!activeLogin" link to="/signin" />
+      </v-list>
     </v-navigation-drawer>
 
     <v-main>
@@ -45,6 +55,7 @@ import SignInBtn from './components/SignInBtn.vue'
 import SignOutBtn from './components/SignOutBtn.vue'
 import Footer from './components/Footer.vue'
 import AppBarSession from './components/AppBarSession.vue'
+import AddParkingBtn from './components/AddParkingBtn.vue';
 
 export default {
   components: {
@@ -52,6 +63,7 @@ export default {
     SignOutBtn,
     Footer,
     AppBarSession,
+    AddParkingBtn
 },
   data: () => ({
     drawer: false

@@ -9,7 +9,6 @@
         </v-col>
         <v-col>
           <v-layout style="gap: 10px" wrap>
-            <AddParkingBtn />
             <v-flex v-for="parking in parkings" :key="parking.id">
               <CardParking :value="parking" />
             </v-flex>

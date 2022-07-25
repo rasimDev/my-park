@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" width="500px">
+  <v-dialog v-if="activeLogin" v-model="dialog" width="500px">
     <template #activator="{ on }">
       <v-btn color="info" v-on="on">Publicar estacionamiento</v-btn>
     </template>
@@ -43,6 +43,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   data: () => ({
     dialog: false,
@@ -56,6 +57,9 @@ export default {
       owner: 'maildelusuario@mail.com'
     },
   }),
+  computed: {
+    ...mapGetters('session', ['activeLogin']),
+  },
   methods: {
     ...mapActions('parkings', {
       createParking: 'createOne',
