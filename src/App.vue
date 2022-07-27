@@ -11,7 +11,7 @@
     <v-navigation-drawer app clipped v-model="drawer" width="auto">
       <v-list nav>
         <v-list-item link to="/">
-          <v-list-item-icon>
+          <v-list-item-icon >
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Reservar</v-list-item-title>
