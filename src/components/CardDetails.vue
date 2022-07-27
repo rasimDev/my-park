@@ -10,20 +10,18 @@
 
       <v-img
         height="250"
-        src="https://www.ebankingnews.com/wp-content/uploads/2018/03/Estacionamiento.jpg"
+        :src="value.image"
       ></v-img>
 
-      <v-card-title>Estacionamiento Miguel Claro, Providencia</v-card-title>
+      <v-card-title>{{ value.name }}</v-card-title>
         <div>
           <ul>
-            <li>Ubicación: Calle Miguel Claro 1410, Providencia.</li>
-            <li>Horario: Lunes a Viernes de 8:00 a 20:00 hrs.</li>
-            <li>Tarifa: $1.000.00 por hora.</li>
-            <li>Propietario: Alejandro Gonzalez</li>
+            <li>{{ value.adress}}</li>
+            <li>Tarifa: ${{ value.price }} por hora.</li>
+            <li>Propietario: {{ value.owner}}</li>
             <li>Contacto: +569 45302015</li>
           </ul>
         </div>
-      </v-card-text>
 
       <v-divider class="mx-4"></v-divider>
 
@@ -52,7 +50,18 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+export default {
+  name: 'parkingDetails',
+  props: ['id'],
+  computed: {
+    ...mapGetters('parkings', ['getParkingById']),
+    parking() {
+      const { id } = this
+      return this.getParkingById(id)
+    }
+  }
+};
 </script>
 
 <style></style>

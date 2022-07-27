@@ -38,8 +38,10 @@ const routes = [
     meta: { requireLogin: false },
   },
   {
-    path: '/details',
-    name: 'DetailsPark',
+    // path: '/parkings/:id',
+    path: '/parkings',
+    name: 'parkings',
+    props: true,
     component: DetailsPark,
     meta: { requireLogin: false },
   },

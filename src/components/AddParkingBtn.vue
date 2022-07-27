@@ -6,32 +6,17 @@
     <v-card>
       <v-form @submit.prevent="handleFormSubmit" ref="form">
         <v-card-title>Publicando estacionamiento</v-card-title>
+        <div id="container-map">
+          <MapComponent />
+        </div>
         <v-card-text>
-          <v-text-field
-            label="Nombre"
-            :rules="[required]"
-            v-model="parking.name"
-          ></v-text-field>
-          <v-text-field
-            label="URL de la Imagen del estacionamiento"
-            v-model="parking.image"
-            :rules="[required]"
-          ></v-text-field>
-          <v-text-field
-            label="Dirección"
-            v-model.number="parking.adress"
-            :rules="[required]"
-          ></v-text-field>
-          <v-text-field
-            label="Comuna"
-            v-model.number="parking.commune"
-            :rules="[required]"
-          ></v-text-field>
-          <v-text-field
-            label="Tarifa diaria"
-            v-model.number="parking.rate"
-            :rules="[required]"
-          ></v-text-field>
+          <v-text-field label="Nombre del estacionamiento" prepend-icon="card-text" :rules="[required]" v-model="parking.name"></v-text-field>
+          <!-- <v-text-field label="URL de la Imagen del estacionamiento" prepend-icon="mdi-camera" v-model="parking.image" :rules="[required]"></v-text-field> -->
+          <v-file-input label="Foto" prepend-icon="mdi-camera" v-model="parking.image"></v-file-input>
+          <!-- Dirección se agregaría desde la ubicación del mapa -->
+          <!-- <v-text-field label="Dirección" v-model.number="parking.adress" :rules="[required]"></v-text-field> -->
+          <!-- <v-text-field label="Comuna" v-model.number="parking.commune" :rules="[required]"></v-text-field> -->
+          <v-text-field label="Precio diario" v-model.number="parking.price" :rules="[required]"></v-text-field>
         </v-card-text>
         <v-card-actions>
           <v-btn type="submit" color="green">Publicar</v-btn>
@@ -44,29 +29,33 @@
 <script>
 import { mapActions } from 'vuex';
 import { mapGetters } from "vuex";
+import MapComponent from './MapComponent.vue';
 export default {
   data: () => ({
     dialog: false,
     parking: {
-      name: '',
-      image: '',
+      name: "",
+      image: "",
       adress: null,
       commune: null,
-      rate: null,
-      status: 'available',
-      owner: 'maildelusuario@mail.com'
+      price: null,
+      status: "available",
+      owner: "maildelusuario@mail.com"
     },
   }),
+  components: {
+    MapComponent
+  },
   computed: {
-    ...mapGetters('session', ['activeLogin']),
+    ...mapGetters("session", ["activeLogin"]),
   },
   methods: {
-    ...mapActions('parkings', {
-      createParking: 'createOne',
-      getAllParkings: 'getAll',
+    ...mapActions("parkings", {
+      createParking: "createOne",
+      getAllParkings: "getAll",
     }),
     required(value) {
-      return !!value || 'Este campo es obligatorio';
+      return !!value || "Este campo es obligatorio";
     },
     async handleFormSubmit() {
       if (this.$refs.form.validate()) {
@@ -79,4 +68,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#container-map {
+  margin: 0 auto;
+  width: 90%;
+  height: 300px;
+}
+</style>
