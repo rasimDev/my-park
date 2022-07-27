@@ -1,40 +1,43 @@
 <template>
   <v-app>
-    <v-app-bar app color="blue-grey lighten-1" dark @click="drawer = !drawer">
+    <v-app-bar app @click="drawer = !drawer" height="80">
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <img src="./assets/logo2.png" alt="MyPark">
-      <!-- <v-app-bar-title> MyPark</v-app-bar-title> -->
+      <!-- <v-app-bar-title> MyPark </v-app-bar-title> -->
       <v-spacer></v-spacer>
-
-      <AppBarSession v-if="activeLogin" />
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn >
-      <SignInBtn 
-        v-if="!activeLogin" 
-        link to="/signin" />
+      <v-img class="mx-auto" src="../src/assets/mypark-logo.jpeg" max-height="90" max-width="90" contain></v-img>
+      <v-spacer></v-spacer>
     </v-app-bar>
 
-    <v-navigation-drawer
-      app
-      clipped
-      v-model="drawer"
-    >
+    <v-navigation-drawer app clipped v-model="drawer" width="auto">
       <v-list nav>
         <v-list-item link to="/">
           <v-list-item-icon >
             <v-icon>mdi-home</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Principal</v-list-item-title>
+          <v-list-item-title>Reservar</v-list-item-title>
         </v-list-item>
-        <!-- <v-list-item link to="/parkings">
+
+        <v-list-item link to="/about">
           <v-list-item-icon>
-            <v-icon>mdi-book-account</v-icon>
+            <v-icon>mdi-account-group</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Administrar Estacionamientos</v-list-item-title>
-        </v-list-item> -->
+          <v-list-item-title>Acerca de</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item>
+          <!-- <v-list-item-icon>
+            <v-icon>mdi-account-group</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Acerca de</v-list-item-title> -->
+          <AddParkingBtn/>
+        </v-list-item>
+
+        <v-divider></v-divider>
+
+        <AppBarSession v-if="activeLogin" />
+        <SignOutBtn v-if="activeLogin" />
+        <SignInBtn v-if="!activeLogin" link to="/signin" />
       </v-list>
-      <SignOutBtn v-if="activeLogin"/>
     </v-navigation-drawer>
 
     <v-main>
@@ -47,23 +50,30 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import AppBarSession from '@/components/AppBarSession'
+import { mapState } from "vuex";
 import SignInBtn from './components/SignInBtn.vue'
 import SignOutBtn from './components/SignOutBtn.vue'
 import Footer from './components/Footer.vue'
+import AppBarSession from './components/AppBarSession.vue'
+import AddParkingBtn from './components/AddParkingBtn.vue';
 
 export default {
   components: {
-    AppBarSession,
     SignInBtn,
     SignOutBtn,
-    Footer
+    Footer,
+    AppBarSession,
+    AddParkingBtn
 },
   data: () => ({
     drawer: false
   }),
   computed: {
     ...mapGetters('session', ['activeLogin']),
+    ...mapState("session", ["user"]),
+    userEmail() {
+      return this.user.email;
+    }
   },
   mounted() {
     this.$store.dispatch('session/subscribeToAuthStateChange');
@@ -71,4 +81,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

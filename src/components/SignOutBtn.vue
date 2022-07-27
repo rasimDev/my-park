@@ -1,5 +1,11 @@
 <template>
-  <v-btn text @click="signOut">Cerrar Sesión</v-btn>
+  <v-list-item>
+        <v-btn color="error" @click="signOut">
+            <v-list-item-title>
+                Cerrar sesión
+            </v-list-item-title>
+        </v-btn>
+    </v-list-item>
 </template>
 
 <script>

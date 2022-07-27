@@ -1,10 +1,13 @@
 <template>
   <v-layout justify-center style="height: 100%" align-center>
     <v-flex sm6>
-      <v-card class="card-login d-flex flex-column">
-      <img class="mx-auto" width="290" src="../assets/car-register.svg" alt="" srcset="">
+      <v-card>
+        <img class="mx-auto img-login" width="290" src="../assets/car-register.svg" alt="" srcset="">
         <v-form @submit.prevent="handleSignInFormSubmit" ref="signInFormRef">
-          <v-card-title> Inicia sesión con tus credenciales </v-card-title>
+          <v-card-title 
+            class="justify-center"> 
+            Inicia sesión
+          </v-card-title>
           <v-card-text>
             <v-text-field type="email" label="Correo electrónico" outlined v-model="credentials.email"
               :rules="[required, mustBeEmail]"></v-text-field>
@@ -12,16 +15,17 @@
               :rules="[required, minLength(6)]"></v-text-field>
           </v-card-text>
           <v-card-actions>
-            <v-btn color="primary" block outlined large type="submit">
+            <v-btn color="primary" block large type="submit">
               Iniciar sesión
-              <v-icon
-                class="ml-4">mdi-arrow-right-thin-circle-outline</v-icon>
+              <v-icon class="ml-4">mdi-login</v-icon>
             </v-btn>
           </v-card-actions>
         </v-form>
-        <v-alert dense outlined type="error" class="mt-5" @click="$router.push('/signup')">
-          ¿No tienes una cuenta? Regístrate, es gratis
-        </v-alert>
+        <v-card-actions>
+          <v-btn @click="$router.push('/signup')" class="mt-5" outlined block color="primary">
+            ¿No tienes una cuenta? Regístrate
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-flex>
 
@@ -71,7 +75,7 @@ export default {
 </script>
 
 <style>
-.card-login{
-  border: none;
+.img-login {
+  width: 100%;
 }
 </style>
