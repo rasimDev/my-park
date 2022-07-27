@@ -40,18 +40,6 @@
         cols="12"
         md="8"
       >
-        <v-select
-          v-model="variant"
-          :items="items"
-          clearable
-          label="Variant"
-        ></v-select>
-
-        <v-checkbox
-          v-model="padless"
-          hide-details
-          label="Padless"
-        ></v-checkbox>
       </v-col>
     </v-row>
   </v-card>
