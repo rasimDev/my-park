@@ -2,18 +2,23 @@
   <div>
     <v-container>
       <v-row>
-        <v-col>
-          <v-layout id="mapContainer">
-            <MapComponent />
-          </v-layout>
+        <v-col cols="12" class="mb-5">
+          <h1>Tenemos estos estacionamientos para ti</h1>
         </v-col>
-        <v-col>
-          <v-layout style="gap: 10px" wrap>
-            <v-flex v-for="parking in parkings" :key="parking.id">
-              <CardParking :value="parking" />
+      </v-row>
+      <v-row no-gutters>
+        <v-col v-for="parking in parkings" :key="parking.id" cols="12" sm="4">
+          <v-layout>
+            <v-flex>
+              <CardParking :value="parking" class="card-parking" />
             </v-flex>
           </v-layout>
         </v-col>
+        <!-- <v-col>
+          <v-layout id="mapContainer">
+            <MapComponent />
+          </v-layout>
+        </v-col>-->
       </v-row>
     </v-container>
   </div>
@@ -25,24 +30,24 @@ import MapComponent from "@/components/MapComponent.vue"
 import AddParkingBtn from "@/components/AddParkingBtn.vue"
 import { mapState, mapActions } from 'vuex'
 export default {
-    components: {
+  components: {
     CardParking,
     MapComponent,
     AddParkingBtn
-},
-    computed: {
-      ...mapState('parkings', {
-        parkings: (state) => state.list
-      })
-    },
-    methods: {
-      ...mapActions('parkings', {
-        getAllParkings: 'getAll'
-      })
-    },
-    mounted(){
-      this.getAllParkings()
-    }
+  },
+  computed: {
+    ...mapState('parkings', {
+      parkings: (state) => state.list
+    })
+  },
+  methods: {
+    ...mapActions('parkings', {
+      getAllParkings: 'getAll'
+    })
+  },
+  mounted() {
+    this.getAllParkings()
+  }
 }
 </script>
 
@@ -50,5 +55,10 @@ export default {
 #mapContainer {
   width: 100%;
   height: 100%;
+}
+
+.card-parking {
+  width: 90%;
+  margin-bottom: 20px;
 }
 </style>

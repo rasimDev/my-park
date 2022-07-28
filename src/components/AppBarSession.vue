@@ -17,7 +17,7 @@ export default {
     computed: {
         ...mapState("session", ["user"]),
         userEmail() {
-            return this.user.email;
+            return this.user.email
         },
     },
 };

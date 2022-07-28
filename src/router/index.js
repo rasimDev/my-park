@@ -9,6 +9,7 @@ import DetailsPark from '@/views/DetailsParkView.vue';
 import Home from '@/views/HomeView.vue';
 import SignIn from '@/views/SignInView.vue';
 import SignUp from '@/views/SignUpView.vue';
+import AddParkingView from '@/views/AddParkingView.vue';
 
 
 Vue.use(VueRouter);
@@ -47,6 +48,12 @@ const routes = [
     path: '/about',
     name: 'AboutView',
     component: AboutView,
+    meta: { requireLogin: false },
+  },
+  {
+    path: '/publish',
+    name: 'AddParkingView',
+    component: AddParkingView,
     meta: { requireLogin: false },
   },
 ];
