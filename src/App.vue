@@ -24,12 +24,18 @@
           <v-list-item-title>Acerca de</v-list-item-title>
         </v-list-item>
 
+        <v-list-item link to="/publish">
+          <v-list-item-icon>
+            <v-icon>mdi-sticker-plus</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Publicar</v-list-item-title>
+        </v-list-item>
+
         <v-list-item>
           <!-- <v-list-item-icon>
             <v-icon>mdi-account-group</v-icon>
           </v-list-item-icon>
           <v-list-item-title>Acerca de</v-list-item-title> -->
-          <AddParkingBtn/>
         </v-list-item>
 
         <v-divider></v-divider>
@@ -53,6 +59,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import { mapState } from "vuex";
+
 import SignInBtn from './components/SignInBtn.vue'
 import SignOutBtn from './components/SignOutBtn.vue'
 import Footer from './components/Footer.vue'
@@ -69,13 +76,14 @@ export default {
 },
   data: () => ({
     drawer: false
+  
   }),
   computed: {
     ...mapGetters('session', ['activeLogin']),
-    ...mapState("session", ["user"]),
-    userEmail() {
-      return this.user.email;
-    }
+    // ...mapState("session", ["user"]),
+    // userEmail() {
+    //   return this.user.email;
+    // }
   },
   mounted() {
     this.$store.dispatch('session/subscribeToAuthStateChange');

@@ -57,16 +57,14 @@
           ></v-img>
         </v-row>
       </v-container>
-      <AppFooter />
     </v-container>
   </div>
 </template>
 
 <script>
-import AppFooter from '@/components/AppFooter.vue';
 export default {
   components: {
-    AppFooter,
+    
   },
 };
 </script>
