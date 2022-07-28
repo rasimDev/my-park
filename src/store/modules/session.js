@@ -11,6 +11,9 @@ export const sessionModule = {
     activeLogin(state) {
       return !!state.user;
     },
+    userEmail(state) {
+      return state.user ? state.user.email : '';
+    },
   },
   mutations: {
     SET_USER(state, newUser) {
@@ -24,7 +27,7 @@ export const sessionModule = {
     async subscribeToAuthStateChange({ commit }) {
       Firebase.auth().onAuthStateChanged((user) => {
         commit('SET_USER', user);
-        if(user) Router.push("/home")
+        if (user) Router.push('/home');
       });
     },
     async signInWithEmailAndPassword({ commit }, credentials) {
@@ -33,16 +36,16 @@ export const sessionModule = {
         await Firebase.auth().signInWithEmailAndPassword(
           credentials.email,
           credentials.password
-          );
-        } catch (e) {
-          console.error('Error al iniciar sesión', e);
-          alert('Email o contraseña incorrectos')
-        } finally {
-          commit('SET_LOADING', false);
-        }
-      },
-      async createUserWithEmailAndPassword({ commit }, newUser) {
-        commit('SET_LOADING', true);
+        );
+      } catch (e) {
+        console.error('Error al iniciar sesión', e);
+        alert('Email o contraseña incorrectos');
+      } finally {
+        commit('SET_LOADING', false);
+      }
+    },
+    async createUserWithEmailAndPassword({ commit }, newUser) {
+      commit('SET_LOADING', true);
 
       try {
         await Firebase.auth().createUserWithEmailAndPassword(

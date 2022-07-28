@@ -16,7 +16,6 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-
     path: '*',
     redirect: '/home',
   },
@@ -39,7 +38,7 @@ const routes = [
     meta: { requireLogin: false },
   },
   {
-    path: '/details',
+    path: '/details/:id',
     name: 'DetailsPark',
     component: DetailsPark,
     meta: { requireLogin: false },
