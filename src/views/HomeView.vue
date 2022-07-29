@@ -28,12 +28,14 @@
 import CardParking from "@/components/CardParking.vue"
 import MapComponent from "@/components/MapComponent.vue"
 import AddParkingBtn from "@/components/AddParkingBtn.vue"
+import AppFooter from "@/components/AppFooter.vue"
 import { mapState, mapActions } from 'vuex'
 export default {
   components: {
     CardParking,
     MapComponent,
-    AddParkingBtn
+    AddParkingBtn,
+    AppFooter
   },
   computed: {
     ...mapState('parkings', {
