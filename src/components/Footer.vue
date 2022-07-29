@@ -1,59 +1,48 @@
 <template>
-  <v-card height="400px">
-    <v-footer
-      v-bind="localAttrs"
-      :padless="padless"
-    >
-      <v-card
-        flat
-        tile
-        width="100%"
-        class="red lighten-1 text-center"
-      >
-        <v-card-text>
-          <v-btn
+  <v-footer
+    color="primary dark text-center"
+    padless
+  >
+    <v-card-text class="border">
+          <v-btn 
             v-for="icon in icons"
             :key="icon"
-            class="mx-4"
+            class="mx-5 white--text"
             icon
           >
-            <v-icon size="24px">
+            <v-icon size="32px">
               {{ icon }}
             </v-icon>
           </v-btn>
         </v-card-text>
 
-        <v-divider></v-divider>
-
         <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          {{ new Date().getFullYear() }} — <strong>My Park</strong>
         </v-card-text>
-      </v-card>
-    </v-footer>
-
-    <v-row
-      align="center"
-      justify="center"
-      class="ma-12"
-    >
-      <v-col
-        cols="12"
-        md="8"
-      >
-      </v-col>
-    </v-row>
-  </v-card>
+     </v-card>
+  </v-footer>
 </template>
 
-<style></style>
-
 <script>
-  export default {
-    data: () => ({
-      icons: [
-        'mdi-facebook',
-        'mdi-instagram',
-      ],
-    }),
-  }
+export default {
+  data: () => ({
+    icons: ['mdi-account', 'mdi-cards-heart', 'mdi-cog'],
+    items: ['default', 'absolute', 'fixed'],
+    padless: false,
+    variant: 'default',
+  }),
+  computed: {
+    localAttrs() {
+      const attrs = {};
+
+      if (this.variant === 'default') {
+        attrs.absolute = false;
+        attrs.fixed = false;
+      } else {
+        attrs[this.variant] = true;
+      }
+      return attrs;
+    },
+  },
+};
 </script>

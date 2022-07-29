@@ -1,9 +1,10 @@
 <template>
-  <div class="container">
-    <v-footer v-bind="localAttrs" :padless="padless">
-      <v-card flat tile width="100%" class="primary dark text-center">
-        <v-card-text class="border">
-          <v-btn
+  <v-footer
+    color="primary dark text-center"
+    padless
+  >
+    <v-card-text class="border">
+          <v-btn 
             v-for="icon in icons"
             :key="icon"
             class="mx-5 white--text"
@@ -18,9 +19,8 @@
         <v-card-text class="white--text">
           {{ new Date().getFullYear() }} — <strong>My Park</strong>
         </v-card-text>
-      </v-card>
-    </v-footer>
-  </div>
+     </v-card>
+  </v-footer>
 </template>
 
 <script>
@@ -46,10 +46,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.v-footer {
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-}
-</style>
