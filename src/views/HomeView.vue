@@ -2,14 +2,9 @@
   <div>
     <div class="hero">
       <div class="img-hero">
-        <img src="../assets/hero-section.svg" alt="" />
+        <img src="../assets/banner.png" alt="" />
       </div>
-      <div class="text-hero">
-        <p class="hero-title">Encuentra el estacionamiento ideal para ti</p>
-        <p class="hero-description">
-          MyPark te ofrece los mejores estacionamientos donde quiera que vayas, reserva con completa seguridad y a un precio asequible para todos.
-        </p>
-      </div>
+      
     </div>
     <v-container>
       <div class="cards">
@@ -71,8 +66,8 @@ export default {
 }
 
 .img-hero {
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  height: 250px;
 }
 
 .img-hero img {
