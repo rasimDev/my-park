@@ -1,8 +1,7 @@
 <template>
-  <div v-if="parking">
+  <div v-if="parking" class="contenedor-detalles">
     <CardDetails :value="parking" />
     <div id="container-map">
-      <h6>Ubicación</h6>
       <MapComponent :marker="parking.coords" />
     </div>
   </div>
@@ -35,8 +34,17 @@ export default {
 </script>
 
 <style>
-#container-map {
+.contenedor-detalles {
+  display: flex;
+  flex-flow: row wrap;
+  gap:10px;
+  margin: 0 auto;
   width: 100%;
-  height: 300px;
+}
+
+#container-map {
+  width: 500px;
+  height: 485px;
+  margin-top: 50px;
 }
 </style>

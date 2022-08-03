@@ -24,7 +24,7 @@
           <v-list-item-title>Acerca de</v-list-item-title>
         </v-list-item>
 
-        <v-list-item link to="/publish">
+        <v-list-item v-if="activeLogin" link to="/publish">
           <v-list-item-icon>
             <v-icon>mdi-sticker-plus</v-icon>
           </v-list-item-icon>
@@ -92,4 +92,7 @@ export default {
 </script>
 
 <style>
+* {
+  font-family: 'Montserrat', sans-serif;
+}
 </style>
