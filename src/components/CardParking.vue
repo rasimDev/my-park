@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-card class="mx-auto" max-width="400">
+  <div class="mx-auto">
+    <v-card class="mx-auto card-parking">
       <v-img class="white--text align-end" height="200px" :src="value.image">
         <v-card-title class="title-text">{{ value.title }}</v-card-title>
       </v-img>
@@ -56,5 +56,9 @@ export default {
 <style>
 .title-text {
   background-color: #00000061;
+}
+
+.card-parking{
+  width: 300px;
 }
 </style>

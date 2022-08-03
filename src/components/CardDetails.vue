@@ -1,5 +1,5 @@
 <template>
-    <v-card class="mx-auto my-12" max-width="450" max-height="" >
+    <v-card class="my-12 detalle">
       <template slot="progress">
         <v-progress-linear
           color="primary"
@@ -23,11 +23,10 @@
             <li>Contacto: {{ value.owner }}</li>
           </ul>
         </div>
-      </v-card-text>
 
       <v-divider class="mx-4"></v-divider>
 
-      <v-card-text class="d-flex justify-center">
+      <!-- <v-card-text class="d-flex justify-center">
         <v-chip-group 
           active-class="primary accent-4 white--text"
         >
@@ -41,7 +40,7 @@
 
           <v-chip>10:00PM</v-chip>
         </v-chip-group>
-      </v-card-text>
+      </v-card-text> -->
 
       <v-card-actions class="d-flex justify-center">
         <v-btn class="primary px-5" @click="Reserve">
@@ -66,4 +65,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.detalle {
+  width: 450px;
+}
+</style>
