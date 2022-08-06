@@ -1,32 +1,25 @@
 <template>
-    <v-card class="my-12 detalle">
-      <template slot="progress">
-        <v-progress-linear
-          color="primary"
-          height="10"
-          indeterminate
-        ></v-progress-linear>
-      </template>
+  <v-card class="my-12 detalle">
+    <template slot="progress">
+      <v-progress-linear color="primary" height="10" indeterminate></v-progress-linear>
+    </template>
 
-      <v-img
-        height="250"
-        :src="value.image"
-      ></v-img>
+    <v-img height="250" :src="value.image"></v-img>
 
-      <v-card-title>{{ value.title }}</v-card-title>
-        <div>
-          <ul>
-            <li>Ubicación: {{ value.address }}</li>
-            <li>Horario: {{ value.rate }} - {{ value.spawn }}</li>
-            <li>Tarifa: {{ value.price | currency }}</li>
-            <li>Propietario: {{ value.owner }}</li>
-            <li>Contacto: {{ value.owner }}</li>
-          </ul>
-        </div>
+    <v-card-title>{{ value.title }}</v-card-title>
+    <div>
+      <ul>
+        <li>Ubicación: {{ value.address }}</li>
+        <li>Horario: {{ value.rate }} - {{ value.spawn }}</li>
+        <li>Tarifa: {{ value.price | currency }}</li>
+        <li>Propietario: {{ value.owner }}</li>
+        <li>Contacto: {{ value.owner }}</li>
+      </ul>
+    </div>
 
-      <v-divider class="mx-4"></v-divider>
+    <v-divider class="mx-4"></v-divider>
 
-      <!-- <v-card-text class="d-flex justify-center">
+    <!-- <v-card-text class="d-flex justify-center">
         <v-chip-group 
           active-class="primary accent-4 white--text"
         >
@@ -42,17 +35,15 @@
         </v-chip-group>
       </v-card-text> -->
 
-      <v-card-actions class="d-flex justify-center">
-        <v-btn class="primary px-5" @click="Reserve">
-          Reserva
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+    <v-card-actions class="d-flex justify-center">
+      <v-btn class="primary px-5" @click="Reserve"> Reserva </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
 export default {
-  props: ["value"],
+  props: ['value'],
   filters: {
     currency(value) {
       return new Intl.NumberFormat('es-CL', {
@@ -60,9 +51,8 @@ export default {
         currency: 'CLP',
       }).format(value)
     },
-  }
-
-};
+  },
+}
 </script>
 
 <style>
