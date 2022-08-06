@@ -15,15 +15,15 @@
           v-model="parking.title"
           :disabled="loading"
         ></v-text-field>
-        <v-text-field
+        <!-- <v-text-field
           label="URL de la Imagen del estacionamiento"
           v-model="parking.image"
           :rules="[required]"
           :disabled="loading"
         >
-        </v-text-field>
-        <!-- <v-file-input label="Foto" prepend-icon="mdi-camera" v-model="parking.image" :rules="[required]"> -->
-        <!-- </v-file-input> -->
+        </v-text-field> -->
+        <v-file-input label="Foto" prepend-icon="mdi-camera" v-model="parking.image" :rules="[required]"> -->
+        </v-file-input> 
         <v-select
           :items="rates"
           label="Periodo"

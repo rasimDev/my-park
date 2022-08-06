@@ -1,26 +1,20 @@
 <template>
   <div class="mx-auto">
-    <v-card class="mx-auto card-parking">
+    <v-card class="mx-auto card-parking" link :to="`/details/${value.id}`">
       <v-img class="white--text align-end" height="200px" :src="value.image">
-        <v-card-title class="title-text">{{ value.title }}</v-card-title>
+        <v-card-title class="title-text font-weight-bold">{{ value.title }}</v-card-title>
       </v-img>
-      <v-card-subtitle class="pb-0">{{ value.address }} </v-card-subtitle>
 
-      <v-card-text class="text--primary">
-        <div>{{ value.rate | rate }}</div>
-        <div>{{ value.spawn }}</div>
-      </v-card-text>
+      <div class="resume-parking">
+        <v-icon class="icon-resume">mdi-map-marker</v-icon>
+        {{ value.address }}
+      </div>
 
-      <v-card-actions>
-        <!-- <v-btn
-        color="orange"
-        text
-      >
-        Compartir
-      </v-btn> -->
+      <div class="resume-parking">
+        <v-icon class="icon-resume">mdi-currency-usd</v-icon>
+        {{ value.price }}
+      </div>
 
-        <v-btn small color="primary" dark link :to="`/details/${value.id}`"> Reservar </v-btn>
-      </v-card-actions>
     </v-card>
   </div>
 </template>
@@ -58,7 +52,20 @@ export default {
   background-color: #00000061;
 }
 
-.card-parking{
+.card-parking {
   width: 300px;
+  padding-bottom: 5px;
+}
+
+.resume-parking {
+  width: 90%;
+  display: flex;
+  margin: 20px auto;
+  font-weight: 100;
+  color: #757575;
+}
+
+.icon-resume{
+  margin-right: 15px;
 }
 </style>

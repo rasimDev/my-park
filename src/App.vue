@@ -30,14 +30,6 @@
           </v-list-item-icon>
           <v-list-item-title>Publicar</v-list-item-title>
         </v-list-item>
-
-        <v-list-item>
-          <!-- <v-list-item-icon>
-            <v-icon>mdi-account-group</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Acerca de</v-list-item-title> -->
-        </v-list-item>
-
         <v-divider></v-divider>
 
         <AppBarSession v-if="activeLogin" />
@@ -59,13 +51,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import { mapState } from "vuex";
-
 import SignInBtn from './components/SignInBtn.vue'
 import SignOutBtn from './components/SignOutBtn.vue'
 import Footer from './components/Footer.vue'
 import AppBarSession from './components/AppBarSession.vue'
 import AddParkingBtn from './components/AddParkingBtn.vue';
-
 export default {
   components: {
     SignInBtn,
