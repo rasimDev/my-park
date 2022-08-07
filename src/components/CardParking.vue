@@ -4,7 +4,6 @@
       <v-img class="white--text align-end" height="200px" :src="value.image">
         <v-card-title class="title-text font-weight-bold">{{ value.title }}</v-card-title>
       </v-img>
-
       <div class="resume-parking">
         <v-icon class="icon-resume">mdi-map-marker</v-icon>
         {{ value.address }}
@@ -12,9 +11,8 @@
 
       <div class="resume-parking">
         <v-icon class="icon-resume">mdi-currency-usd</v-icon>
-        {{ value.price }}
+        {{ value.price }} diario
       </div>
-
     </v-card>
   </div>
 </template>
