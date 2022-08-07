@@ -5,7 +5,7 @@
         </v-list-item-icon>
         <v-list-item-title>
             <!-- Mostrar nombre de usuario -->
-            {{ user.email }}
+            Alejandro González
         </v-list-item-title>
     </v-list-item>
 
