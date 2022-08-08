@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <!-- <v-app-bar-title> MyPark </v-app-bar-title> -->
       <v-spacer></v-spacer>
-      <v-img class="mx-auto" src="../src/assets/mypark-logo.jpeg" max-height="90" max-width="90" contain></v-img>
+      <img class="mx-auto logo" src="../src/assets/mypark-logo.jpeg" max-height="90" max-width="90" contain>
       <v-spacer></v-spacer>
     </v-app-bar>
 
@@ -84,5 +84,9 @@ export default {
 <style>
 * {
   font-family: 'Montserrat', sans-serif;
+}
+
+.logo {
+  width: 100px;
 }
 </style>
