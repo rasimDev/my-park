@@ -37,14 +37,14 @@ export default {
 .contenedor-detalles {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   gap:10px;
-  margin: 0 auto;
   width: 100%;
 }
 
 #container-map {
   width: 500px;
-  height: 485px;
+  height: 600px;
   margin-top: 50px;
 }
 </style>

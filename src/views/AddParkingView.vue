@@ -1,12 +1,7 @@
 <template>
   <v-card>
     <v-form @submit.prevent="handleFormSubmit" ref="form">
-      <v-card-title class="justify-center"
-        >Publica tu estacionamiento</v-card-title
-      >
-      <div id="map-container">
-        <MapComponent @pickPlace="handlePlacePicked" :disabled="loading" />
-      </div>
+      <v-card-title class="justify-left font-weight-bold">Publica tu estacionamiento</v-card-title>
       <v-card-text>
         <v-text-field
           label="Nombre del estacionamiento"
@@ -22,9 +17,14 @@
           :disabled="loading"
         >
         </v-text-field> -->
-        <v-file-input label="Foto" prepend-icon="mdi-camera" v-model="parking.image" :rules="[required]"> -->
-        </v-file-input> 
-        <v-select
+        <v-file-input
+          label="Carga una foto"
+          prepend-icon="mdi-camera"
+          v-model="parking.image"
+          :rules="[required]"
+        >
+        </v-file-input>
+        <!-- <v-select
           :items="rates"
           label="Periodo"
           v-model="parking.rate"
@@ -35,18 +35,22 @@
           v-model.number="parking.spawn"
           :rules="[required]"
           :disabled="loading"
-        ></v-text-field>
+        ></v-text-field> -->
         <v-text-field
-          label="Precio"
+          label="Precio diario"
           prepend-icon="mdi-currency-usd"
           v-model.number="parking.price"
           :rules="[required]"
           :disabled="loading"
         ></v-text-field>
+        <v-card-text class="text-ubicacion">
+          Selecciona la ubicación en el mapa
+          <div id="map-container">
+            <MapComponent @pickPlace="handlePlacePicked" :disabled="loading" />
+          </div>
+        </v-card-text>
         <v-card-actions>
-          <v-btn type="submit" large outlined :loading="loading"
-            >Publicar</v-btn
-          >
+          <v-btn type="submit" large outlined :loading="loading">Publicar</v-btn>
         </v-card-actions>
       </v-card-text>
     </v-form>
@@ -54,8 +58,8 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import MapComponent from '@/components/MapComponent.vue';
+import { mapActions, mapGetters } from 'vuex'
+import MapComponent from '@/components/MapComponent.vue'
 
 export default {
   components: {
@@ -92,29 +96,42 @@ export default {
       getAllParkings: 'getAll',
     }),
     required(value) {
-      return !!value || 'Este campo es obligatorio';
+      return !!value || 'Este campo es obligatorio'
     },
     async handleFormSubmit() {
       if (this.$refs.form.validate()) {
         try {
-          this.loading = true;
-          await this.createParking({ ...this.parking, owner: this.userEmail });
-          this.dialog = false;
-          await this.getAllParkings();
-          this.$router.replace("/home")
+          this.loading = true
+          await this.createParking({ ...this.parking, owner: this.userEmail })
+          this.dialog = false
+          await this.getAllParkings()
+          this.$router.replace('/home')
         } catch (e) {
-          console.error(e);
+          console.error(e)
         } finally {
-          this.loading = false;
+          this.loading = false
         }
       }
     },
     handlePlacePicked(result) {
-      this.parking.coords = result.center;
-      this.parking.address = result.place_name;
+      this.parking.coords = result.center
+      this.parking.address = result.place_name
     },
   },
-};
+}
 </script>
 
-<style></style>
+<style>
+
+.text-ubicacion {
+  font-size: 18px;
+  color: #757575;
+  margin-bottom: 10px;
+}
+
+#map-container {
+  margin: 0;
+  width: 100%;
+  margin-top: 20px;
+}
+</style>
