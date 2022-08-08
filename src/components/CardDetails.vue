@@ -46,7 +46,7 @@
       </template>
       <v-date-picker v-model="date" no-title scrollable>
         <v-spacer></v-spacer>
-        <v-btn text color="primary" @click="menu = false"> Cancel </v-btn>
+        <v-btn text color="primary" @click="menu = false"> Cancelar </v-btn>
         <v-btn text color="primary" @click="$refs.menu.save(date)"> OK </v-btn>
       </v-date-picker>
     </v-menu>
@@ -55,23 +55,47 @@
     <v-card-actions class="d-flex">
       <!-- <v-btn large class="primary px-5" @click="reservation"> Reserva </v-btn> -->
       <v-btn
-        :disabled="dialog"
-        :loading="dialog"
-        class="white--text"
-        color="blue darken-2"
-        outlined
-        @click="dialog = true"
-      >
-        Reservar
-      </v-btn>
-      <v-dialog v-model="dialog" hide-overlay persistent width="300">
-        <v-card color="primary" dark>
-          <v-card-text>
-            Reservando estacionamiento
-            <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
-          </v-card-text>
-        </v-card>
-      </v-dialog>
+      :color="colorBtn"
+      dark
+      @click="dialog = true"
+    >
+      {{ textBtn }}
+    </v-btn>
+
+    <v-dialog
+      v-model="dialog"
+      max-width="290"
+    >
+      <v-card>
+        <v-card-title class="text-h5">
+          {{ titleDialog }}
+        </v-card-title>
+
+        <v-card-text>
+          {{ textDialog }}
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="red darken-1"
+            text
+            @click="dialog = false"
+          >
+            {{ disagree }}
+          </v-btn>
+
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="dialog = false"
+          >
+            {{ agree }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
       <!-- Falta validación de que solo aparezca la alerta cuando se hace click -->
       <div id="alerta"></div>
@@ -84,6 +108,12 @@
 export default {
   data: () => ({
     dialog: false,
+    textBtn: 'Reservar',
+    colorBtn: 'blue darken-2',
+    titleDialog: 'Confirma tu reserva',
+    textDialog: 'Puedes cancelar tu reserva en cualquier momento',
+    agree:'Confirmar',
+    disagree: 'Cancelar',
     date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10),
     menu: false,
     modal: false,
@@ -91,9 +121,11 @@ export default {
   }),
   watch: {
     dialog(val) {
-      if (!val) return
-
-      setTimeout(() => (this.dialog = false), 4000)
+      if (!val) 
+        return (
+          this.textBtn = 'Cancelar reserva',
+          this.colorBtn = 'red darken-2')
+      setTimeout(() => (this.dialog = false), 10000)
     },
   },
   props: ['value'],
