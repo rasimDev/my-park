@@ -2,8 +2,19 @@
   <div>
     <div class="hero">
       <div class="img-hero">
-        <img src="../assets/banner.png" alt="" />
-      </div>
+        <!-- <img src="../assets/banner.png" alt="" /> -->
+    
+    <!-- carrusel -->
+     <v-carousel hide-delimiters>
+    <v-carousel-item
+      v-for="(item,i) in items"
+      :key="i"
+      :src="item.src"
+       height="300"
+    ></v-carousel-item>
+  </v-carousel>
+  <!-- carrusel -->
+  </div>
       
     </div>
     <v-container>
@@ -26,6 +37,27 @@ import AppFooter from '@/components/AppFooter.vue'
 
 import { mapState, mapActions } from 'vuex'
 export default {
+   data () {
+      return {
+        items: [
+          {
+            src: 'https://i.postimg.cc/VkyDV1NP/banner1.png',
+          },
+          {
+            src: 'https://i.postimg.cc/1XHWLpxb/banner2.png',
+          },
+          {
+            src: 'https://i.postimg.cc/FKVJbGjt/banner3.png',
+          },
+          {
+            src: 'https://i.postimg.cc/50ZYbGJC/banner4.png',
+          },
+          {
+            src: 'https://i.postimg.cc/DZKS9jXZ/banner5.png',
+          },
+        ],
+      }
+    },
   components: {
     CardParking,
     MapComponent,
@@ -88,5 +120,21 @@ export default {
 }
 .card-parking {
   margin-bottom: 20px;
+}
+.v-image__image, .v-image__placeholder {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 230px;
+}
+.v-window__prev, .v-window__next {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    position: absolute;
+    margin: 0 16px;
+    top: calc(50% - 150px);
+    z-index: 1;
 }
 </style>

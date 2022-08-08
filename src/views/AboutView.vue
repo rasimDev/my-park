@@ -87,7 +87,10 @@ p {
   display: flex;
   flex-direction: column;
   width: 300px;
-  gap: 20px
+  gap: 20px;
+  height:280px;
 }
-
+element.style {
+    padding-bottom: 0px;
+}
 </style>
